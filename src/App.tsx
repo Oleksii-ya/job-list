@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { Routes, Route, Link } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 
 import JobList from './pages/JobList';
 import DetailedJob from './pages/DetailedJob';
@@ -8,11 +8,14 @@ import JobsProvider from './store/JobsProvider';
 
 function App() {
   return (
-    <JobsProvider>
-      <Routes>
-        <Route path='/' element={<JobList />}></Route>
-      </Routes>
-    </JobsProvider>
+    <div className="container">
+      <JobsProvider>
+        <Routes>
+          <Route path='/*' element={<JobList />}></Route>
+          <Route path='/detail' element={<DetailedJob />}></Route>
+        </Routes>
+      </JobsProvider>
+    </div>
   )
 }
 

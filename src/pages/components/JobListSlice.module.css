@@ -1,0 +1,19 @@
+.container{
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.postWrapper{
+  display: grid;
+  grid-template-columns: 85px 5fr 1fr;
+  background-color: #fff;
+  border-radius: 6px;
+  padding: 24px 16px;
+  margin-bottom: 8px;
+}
+.officeIcon{
+  width: 85px;
+  height: 85px;
+  object-fit: cover;
+  object-position: center center;
+  border-radius: 50%;
+}

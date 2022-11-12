@@ -1,21 +1,32 @@
 import React from 'react'
 import { useContext } from 'react'
+import { Route, Routes } from 'react-router-dom'
 
 import JobsContext from '../store/jobs-context'
+import JobListSlice from './components/JobListSlice'
+import Pagination from './components/Pagination'
+import jobListStyle from './JobList.module.css'
 
 const JobList = () => {
   const jobsCtx = useContext(JobsContext)
+  const postsOnPage = 5
+  const numberPages: number = Math.ceil(jobsCtx.length / postsOnPage)
 
-  if (jobsCtx.length === 0) {
-    return <div>Loading...</div>
-  }
-
-  const list = jobsCtx.map((item) => {
-    return <div key={item.id}>{item.id}</div>
-  }
+  return (
+    <div className={jobListStyle.container}>
+      <div>
+        <Routes>
+          <Route path='' element={<JobListSlice
+            postsOnPage={postsOnPage}
+          />}></Route>
+          <Route path=':page' element={<JobListSlice
+            postsOnPage={postsOnPage}
+          />}></Route>
+        </Routes>
+      </div>
+      <Pagination numberPages={numberPages}></Pagination>
+    </div>
   )
-
-  return <>{list}</>
 
 }
 
