@@ -3,7 +3,11 @@ import React from "react";
 import Jobs from "./Jobs";
 
 const JobsContext = React.createContext(
-  [new Jobs()]
+  {
+    status: false,
+    message: "",
+    payload: [] as Jobs[],
+  }
 )
 
 export default JobsContext

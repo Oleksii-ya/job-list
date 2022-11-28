@@ -1,4 +1,4 @@
-class Jobs {
+interface Jobs {
   "id": string
   "name": string
   "email": string
@@ -7,12 +7,12 @@ class Jobs {
   "salary": string
   "address": string
   "benefits": string[]
-  "location": { "lat": string, "long": string }
+  "location": { "lat": number, "long": number }
   "pictures": string[]
   "createdAt": string
   "updatedAt": string
   "description": string
-  "employment_type": [string]
+  "employment_type": string[]
 }
 
 export default Jobs
