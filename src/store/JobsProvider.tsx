@@ -500,55 +500,58 @@ const JobsProvider = (props: any) => {
   const [jobs, setJobs] = useState({
     status: false,
     message: "is loading...",
-    payload: [] as Jobs[],
+    originalPayload: [] as Jobs[],
+    filteredPayload: [] as Jobs[]
   });
 
-  // useEffect(() => {
-  //   fetch(
-  //     "https://data-api-ff2f1-default-rtdb.europe-west1.firebasedatabase.app/data.json"
-  //   )
-  //     .then((response) => {
-  //       if (!response.ok) {
-  //         setJobs((state) => {
-  //           return { ...state, message: "Could not fetch jobs" };
-  //         });
-  //         throw new Error("Could not fetch jobs");
-  //       }
-  //       return response.json();
-  //     })
-  //     .then((json) => {
-  //       if (json === null) {
-  //         setJobs((state) => {
-  //           return { ...state, message: "Could not fetch jobs" };
-  //         });
-  //         throw new Error("Could not fetch jobs");
-  //       }
-  //       setJobs((state) => {
-  //         return {
-  //           status: true,
-  //           message: "",
-  //           payload: json,
-  //         };
-  //       });
-  //     })
-  //     .catch(() => {
-  //       setJobs((state) => {
-  //         return { ...state, message: "Could not fetch jobs" };
-  //       });
-  //       throw new Error("Could not fetch jobs");
-  //     });
-  // }, []);
-
   useEffect(() => {
-    setJobs({
-      status: true,
-      message: "",
-      payload: data,
-    });
+    fetch(
+      "https://data-api-ff2f1-default-rtdb.europe-west1.firebasedatabase.app/data.json"
+    )
+      .then((response) => {
+        if (!response.ok) {
+          setJobs((state) => {
+            return { ...state, message: "Could not fetch jobs" };
+          });
+          throw new Error("Could not fetch jobs");
+        }
+        return response.json();
+      })
+      .then((json) => {
+        if (json === null) {
+          setJobs((state) => {
+            return { ...state, message: "Could not fetch jobs" };
+          });
+          throw new Error("Could not fetch jobs");
+        }
+        setJobs((state) => {
+          return {
+            status: true,
+            message: "",
+            originalPayload: json,
+            filteredPayload: json.map((item: Jobs) => { return { ...item } })
+          };
+        });
+      })
+      .catch(() => {
+        setJobs((state) => {
+          return { ...state, message: "Could not fetch jobs" };
+        });
+        throw new Error("Could not fetch jobs");
+      });
   }, []);
 
+  // useEffect(() => {
+  //   setJobs({
+  //     status: true,
+  //     message: "",
+  //     payload: data,
+  //   });
+  // }, []);
+
   return (
-    <JobsContext.Provider value={jobs}>{props.children}</JobsContext.Provider>
+    <JobsContext.Provider value={{ jobs, setJobs }}>
+      {props.children}</JobsContext.Provider>
   );
 };
 

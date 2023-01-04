@@ -1,0 +1,10 @@
+.inputPosts {
+  box-sizing: content-box;
+  padding: 6px;
+  width: 180px;
+  margin: 16px 0;
+  font-size: 20px;
+  font-weight: 400;
+  height: 30px;
+  border-radius: 6px;
+}

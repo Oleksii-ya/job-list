@@ -6,23 +6,9 @@
   "rules": {
     "no-console": "warn",
     "prefer-const": "error",
-    "quotes": [
-      "error",
-      "double"
-    ],
-    "jsx-quotes": [
-      "error",
-      "prefer-double"
-    ],
     "indent": [
       "warn",
       2
-    ],
-    // "max-len": [
-    //   "error",
-    //   {
-    //     "code": 120
-    //   }
-    // ]
+    ]
   }
 }

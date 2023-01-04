@@ -9,10 +9,10 @@ const JobListSlice = ({ postsOnPage }: { postsOnPage: number }) => {
   const jobsCtx = useContext(JobsContext);
   const { page } = useParams();
 
-  let postSlice = jobsCtx.payload.slice(0, postsOnPage);
+  let postSlice = jobsCtx.jobs.filteredPayload.slice(0, postsOnPage);
   if (page) {
     const start = (+page - 1) * postsOnPage;
-    postSlice = jobsCtx.payload.slice(start, start + postsOnPage);
+    postSlice = jobsCtx.jobs.filteredPayload.slice(start, start + postsOnPage);
   }
 
   return (
@@ -27,7 +27,11 @@ const JobListSlice = ({ postsOnPage }: { postsOnPage: number }) => {
                 alt="icon"
               />
             </div>
-            <div>{item.title}</div>
+            <div>
+              <div>{item.title}</div>
+              <div>Salary: {item.salary}</div>
+
+            </div>
             <div>
               <img src={starIcon} alt="icon" />
               {item.title}

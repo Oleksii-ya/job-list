@@ -7,6 +7,7 @@ import DetailedJob from "./pages/DetailedJob";
 import JobsProvider from "./store/JobsProvider";
 
 function App() {
+
   return (
     <div className="container">
       <JobsProvider>
