@@ -1,5 +1,5 @@
-.paginationWrapper{
-  margin-bottom: 16px;
+.paginationWrapper {
+  margin: 16px 0;
 }
 .paginationItem {
   color: #000;
@@ -10,7 +10,7 @@
   border-radius: 3px;
   background-color: rgb(247, 241, 210);
 }
-a.paginationItem{
+a.paginationItem {
   text-decoration: none;
 }
 .paginationItem:hover {
